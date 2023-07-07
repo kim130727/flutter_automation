@@ -1,6 +1,6 @@
 # flutter_automation
 
-A new Flutter project.
+쥬기스 영어 문제은행 자동화 프로그램 개발
 
 ## Getting Started
 
