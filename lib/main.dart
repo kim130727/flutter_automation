@@ -1,125 +1,157 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
+import 'package:path/path.dart';
+import 'package:excel/excel.dart';
+import 'package:docx_template/docx_template.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+///
+/// Read file template.docx, produce it and save
+///
+void main() async {
+  final f = File("lib/template2.docx");
+  final docx = await DocxTemplate.fromBytes(await f.readAsBytes());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  int num = 2;
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+  while (num < 10) {
+    var file = "lib/template.xlsx";
+    var bytes = File(file).readAsBytesSync();
+    var excel = Excel.decodeBytes(bytes);
+    var sheet = excel['Sheet1'];
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+    String str = num.toString();
+    print(str);
+    var cell0001 = sheet.cell(CellIndex.indexByString('A$str'));
+    print(cell0001.value);
+    print(cell0001.value.runtimeType);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+    String text0001 = cell0001.value.toString();
+    String text0002 = "Thomas Jefferson's knowledge";
+    String text0003 = "reconnaissance";
+    if (text0003 != "") {
+      text0003 = "*$text0003";
+    }
+    String text0004 = "정찰";
+    String text0005 = "strain";
+    if (text0005 != "") {
+      text0005 = "**$text0005";
+    }
+    String text0006 = "품종";
+    String text0007 = "undaunted";
+    if (text0007 != "") {
+      text0007 = "***$text0007";
+    }
+    String text0008 = "굴하지 않는2";
+    String text0009 = "[정답]";
+    String text0010 = "5";
+    String text0011 = "[소재]";
+    String text0012 = "동화 작가이자 삽화가인 Leo Lionni";
+    String text0013 = "[해석]";
+    String text0014 = "국제적으로 알려진 디자이너이자 삽화가이자 그래픽 아티스트였던 ";
+    String text0015 = "[해설]";
+    String text0016 = "1982년, Lionni는 파킨슨병을 진단받았지만, ";
+    String text0017 = "[어휘]";
+    String text0018 = "illustrator";
+    if (text0018 != "") {
+      text0018 = "□$text0018";
+    }
+    String text0019 = "삽화가";
+    String text0020 = "illustrator";
+    if (text0020 != "") {
+      text0020 = "□$text0020";
+    }
+    String text0021 = "삽화가";
+    String text0022 = "illustrator";
+    if (text0022 != "") {
+      text0022 = "□$text0022";
+    }
+    String text0023 = "삽화가";
+    String text0024 = "illustrator";
+    if (text0024 != "") {
+      text0024 = "□$text0024";
+    }
+    String text0025 = "삽화가";
+    String text0026 = "illustrator";
+    if (text0026 != "") {
+      text0026 = "□$text0026";
+    }
+    String text0027 = "삽화가";
+    String text0028 = "illustrator";
+    if (text0028 != "") {
+      text0028 = "□$text0028";
+    }
+    String text0029 = "삽화가";
+    String text0030 = "illustrator";
+    if (text0030 != "") {
+      text0030 = "□$text0030";
+    }
+    String text0031 = "삽화가";
+    String text0032 = "illustrator";
+    if (text0032 != "") {
+      text0032 = "□$text0032";
+    }
+    String text0033 = "삽화가";
+    String text0034 = "illustrator";
+    if (text0034 != "") {
+      text0034 = "□$text0034";
+    }
+    String text0035 = "삽화가";
+    String text0036 = "illustrator";
+    if (text0036 != "") {
+      text0036 = "□$text0036";
+    }
+    String text0037 = "삽화가";
+    String text0038 = "illustrator";
+    if (text0038 != "") {
+      text0038 = "□$text0038";
+    }
+    String text0039 = "삽화가";
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+    Content content = Content();
+    content
+      ..add(TextContent("0001", text0001))
+      ..add(TextContent("0002", text0002))
+      ..add(TextContent("0003", text0003))
+      ..add(TextContent("0004", text0004))
+      ..add(TextContent("0005", text0005))
+      ..add(TextContent("0006", text0006))
+      ..add(TextContent("0007", text0007))
+      ..add(TextContent("0008", text0008))
+      ..add(TextContent("0009", text0009))
+      ..add(TextContent("0010", text0010))
+      ..add(TextContent("0011", text0011))
+      ..add(TextContent("0012", text0012))
+      ..add(TextContent("0013", text0013))
+      ..add(TextContent("0014", text0014))
+      ..add(TextContent("0015", text0015))
+      ..add(TextContent("0016", text0016))
+      ..add(TextContent("0017", text0017))
+      ..add(TextContent("0018", text0018))
+      ..add(TextContent("0019", text0019))
+      ..add(TextContent("0020", text0020))
+      ..add(TextContent("0021", text0021))
+      ..add(TextContent("0022", text0022))
+      ..add(TextContent("0023", text0023))
+      ..add(TextContent("0024", text0024))
+      ..add(TextContent("0025", text0025))
+      ..add(TextContent("0026", text0026))
+      ..add(TextContent("0027", text0027))
+      ..add(TextContent("0028", text0028))
+      ..add(TextContent("0029", text0029))
+      ..add(TextContent("0030", text0030))
+      ..add(TextContent("0031", text0031))
+      ..add(TextContent("0032", text0032))
+      ..add(TextContent("0033", text0033))
+      ..add(TextContent("0034", text0034))
+      ..add(TextContent("0035", text0035))
+      ..add(TextContent("0036", text0036))
+      ..add(TextContent("0037", text0037))
+      ..add(TextContent("0038", text0038))
+      ..add(TextContent("0039", text0039));
 
-  final String title;
+    final docGenerated = await docx.generate(content);
+    final fileGenerated = File('result/${str}generated.docx');
+    if (docGenerated != null) await fileGenerated.writeAsBytes(docGenerated);
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    num++;
   }
 }
