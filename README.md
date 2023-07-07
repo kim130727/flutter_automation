@@ -3,5 +3,7 @@
 개발언어 : Dart
 
 ## Getting Started
-https://pub.dev/packages/docx_template
+
+docx_template 0.3.4 https://pub.dev/packages/docx_template
+
 excel 2.1.0 https://pub.dev/packages/excel
